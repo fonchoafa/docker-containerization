@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cloud Notes</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Cloud Notes</h1>
+      <p class="sub">Codomax internship, Module 3 &middot; Node.js on EC2 with DynamoDB and S3</p>
+    </header>
+
+    <section class="card">
+      <h2>New note</h2>
+      <form id="note-form">
+        <input id="title" name="title" maxlength="100" placeholder="Title" required>
+        <textarea id="body" name="body" maxlength="1000" rows="3" placeholder="What did you learn?"></textarea>
+        <button type="submit">Save note</button>
+      </form>
+      <p id="message" class="msg" role="status"></p>
+    </section>
+
+    <section>
+      <h2>Notes</h2>
+      <ul id="notes" class="notes"></ul>
+    </section>
+
+    <footer id="status">Checking status&hellip;</footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

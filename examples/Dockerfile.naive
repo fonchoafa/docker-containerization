@@ -1,0 +1,14 @@
+# A deliberately NAIVE Dockerfile, kept only to compare against ../app/Dockerfile.
+# Build it with:  docker build -f examples/Dockerfile.naive -t cloud-notes:naive ./app
+# Problems (each one is fixed in app/Dockerfile):
+#  1. FROM node:22         -> full Debian image, several times bigger than node:22-alpine
+#  2. COPY . . before npm  -> any code change invalidates the cache, so npm reinstalls every build
+#  3. npm install          -> installs dev dependencies too and is not reproducible like npm ci
+#  4. runs as root         -> a bug in the app has full rights inside the container
+#  5. no HEALTHCHECK       -> Docker cannot tell if the app is really working
+FROM node:22
+WORKDIR /app
+COPY . .
+RUN npm install
+EXPOSE 3000
+CMD ["node", "server.js"]
